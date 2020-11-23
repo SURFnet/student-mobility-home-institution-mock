@@ -15,9 +15,7 @@ import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
 
-@ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class OfferingEndpointTest {//extends AbstractIntegrationTest {
+public class OfferingEndpointTest extends AbstractIntegrationTest {
 
     @Test
     void offerings() throws NoSuchProviderException, NoSuchAlgorithmException, JOSEException, JsonProcessingException {

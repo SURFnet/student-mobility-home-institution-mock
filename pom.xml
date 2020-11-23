@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>org.surfnet</groupId>
-    <artifactId>home-institution-mock</artifactId>
+    <artifactId>student-mobility-home-institution-mock</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>home-institution-mock</name>
     <description>home-institution-mock</description>
@@ -98,7 +98,46 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.5</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav-jackrabbit</artifactId>
+                <version>3.3.4</version>
+            </extension>
+        </extensions>
     </build>
+
+    <distributionManagement>
+        <repository>
+            <id>openconext-releases</id>
+            <name>OpenConext public releases repository</name>
+            <url>dav:https://build.openconext.org/repository/public/releases</url>
+        </repository>
+        <snapshotRepository>
+            <id>openconext-snapshots</id>
+            <name>OpenConext public snapshot repository</name>
+            <url>dav:https://build.openconext.org/repository/public/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
