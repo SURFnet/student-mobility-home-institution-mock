@@ -72,8 +72,9 @@ public abstract class AbstractIntegrationTest {
     @RegisterExtension
     WireMockExtension mockServer = new WireMockExtension(8081);
 
-    protected String opaqueAccessToken() throws IOException {
-        String introspectResult = IOUtils.toString( new ClassPathResource("data/introspect.json").getInputStream());
+    protected String opaqueAccessToken(boolean valid) throws IOException {
+        String file = String.format("data/%s.json", valid ? "introspect" : "introspect-invalid-token");
+        String introspectResult = IOUtils.toString( new ClassPathResource(file).getInputStream());
         stubFor(post(urlPathMatching("/introspect")).willReturn(aResponse()
                 .withHeader("Content-Type", "application/json")
                 .withBody(introspectResult)));
