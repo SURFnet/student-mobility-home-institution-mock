@@ -1,0 +1,25 @@
+{
+  "active": true,
+  "authenticating_authority": "http://mock-idp",
+  "client_id": "playground_client",
+  "eduperson_principal_name": "j.doe@example.com",
+  "email": "j.doe@example.com",
+  "email_verified": true,
+  "exp": 1606140430,
+  "family_name": "Doe",
+  "given_name": "John",
+  "iss": "https://connect.test2.surfconext.nl",
+  "name": "John Doe",
+  "nickname": "John Doe",
+  "preferred_username": "John Doe",
+  "schac_home_organization": "example.com",
+  "scope": "openid",
+  "sub": "b60ecf97cc90f3d7dae8bc4b6a331370167775bf",
+  "surf-crm-id": "ad93daef-0911-e511-80d0-005056956c1a",
+  "token_type": "Bearer",
+  "uids": [
+    "admin"
+  ],
+  "unspecified_id": "urn:collab:person:example.com:admin",
+  "updated_at": 1606133230
+}
