@@ -18,7 +18,10 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
                 .get("/persons/1")
                 .then()
                 .statusCode(SC_OK)
-                .body("mail", equalTo("vandamme.mcw@universiteitvanharderwijk.nl"));
+                .body("personId", equalTo("j.doe@example.com"))
+                .body("mail", equalTo("j.doe@example.com"))
+                .body("givenName", equalTo("John"))
+                .body("surname", equalTo("Doe"));
     }
 
     @Test

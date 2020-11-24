@@ -1,5 +1,7 @@
 package home.api;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micrometer.core.instrument.util.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -12,18 +14,35 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.Map;
 
 @RestController
 public class PersonEndpoint {
 
     private static final Log LOG = LogFactory.getLog(PersonEndpoint.class);
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private final ObjectMapper objectMapper;
+
+    public PersonEndpoint(ObjectMapper objectMapper) {
+        this.objectMapper = objectMapper;
+    }
 
     //https://open-education-api.github.io/specification/v4/docs.html#tag/persons/paths/~1persons~1{personId}/get
     @GetMapping(value = "/persons/{personId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String persons(@PathVariable("personId") String personId, BearerTokenAuthentication authentication) throws IOException {
-        LOG.info("Returning person endpoint for " + authentication.getName());
-        return IOUtils.toString(new ClassPathResource("/data/person.json").getInputStream());
+    public Map<String, Object> persons(@PathVariable("personId") String personId, BearerTokenAuthentication authentication) throws IOException {
+        Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/person.json").getInputStream(), new TypeReference<Map<String, Object>>() {
+        });
+
+        Map<String, Object> tokenAttributes = authentication.getTokenAttributes();
+        String eppn = (String) tokenAttributes.get("eduperson_principal_name");
+
+        map.put("personId", eppn);
+        map.put("mail", tokenAttributes.get("email"));
+        map.put("givenName", tokenAttributes.get("given_name"));
+        map.put("surname", tokenAttributes.get("family_name"));
+
+        LOG.info("Returning in person endpoint for " + eppn);
+        return map;
     }
 }
