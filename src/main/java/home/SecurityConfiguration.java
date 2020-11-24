@@ -13,7 +13,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authz -> authz
-                        .antMatchers(HttpMethod.GET, "/offerings/**")
+                        .antMatchers(HttpMethod.GET, "/offerings/**", "/actuator/health", "/actuator/info")
                         .permitAll()
                         .antMatchers(HttpMethod.GET, "/persons/**")
                         .hasAuthority("SCOPE_openid")
