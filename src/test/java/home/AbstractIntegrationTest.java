@@ -54,10 +54,6 @@ import static org.hamcrest.Matchers.equalTo;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class AbstractIntegrationTest {
 
-    static {
-        Security.addProvider(new BouncyCastleProvider());
-    }
-
     @LocalServerPort
     protected int port;
 
