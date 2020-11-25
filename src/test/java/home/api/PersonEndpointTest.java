@@ -15,7 +15,7 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
         given()
                 .when()
                 .auth().oauth2(opaqueAccessToken(true))
-                .get("/persons/1")
+                .get("/persons/me")
                 .then()
                 .statusCode(SC_OK)
                 .body("personId", equalTo("j.doe@example.com"))
@@ -29,7 +29,7 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
         given()
                 .when()
                 .auth().oauth2(opaqueAccessToken(false))
-                .get("/persons/1")
+                .get("/persons/me")
                 .then()
                 .statusCode(SC_UNAUTHORIZED);
     }

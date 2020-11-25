@@ -78,45 +78,4 @@ public abstract class AbstractIntegrationTest {
         return UUID.randomUUID().toString();
     }
 
-    protected String accessToken() throws NoSuchProviderException, NoSuchAlgorithmException, JOSEException, IOException {
-        String keyId = "key_id";
-        RSAKey rsaKey = generateRsaKey(keyId);
-        JWKSet jwkSet = new JWKSet(rsaKey.toPublicJWK());
-        Map<String, Object> jwkSetMap = jwkSet.toJSONObject();
-        stubFor(get(urlPathMatching("/certs")).willReturn(aResponse()
-                .withHeader("Content-Type", "application/json")
-                .withBody(objectMapper.writeValueAsString(jwkSetMap))));
-
-        JWTClaimsSet.Builder builder = new JWTClaimsSet.Builder()
-                .audience("audiences")
-                .expirationTime(Date.from(Instant.now().plus(60 * 60, ChronoUnit.SECONDS)))
-                .jwtID(UUID.randomUUID().toString())
-                .issuer("issuer")
-                .claim("scope", Arrays.asList("openid", "profile"))
-                .issueTime(Date.from(Instant.now()))
-                .subject("subject")
-                .notBeforeTime(new Date(System.currentTimeMillis()));
-        JWTClaimsSet claimsSet = builder.build();
-        JWSHeader header = new JWSHeader.Builder(JWSAlgorithm.RS256).type(JOSEObjectType.JWT)
-                .keyID(keyId).build();
-        SignedJWT signedJWT = new SignedJWT(header, claimsSet);
-        JWSSigner jwsSigner = new RSASSASigner(rsaKey);
-        signedJWT.sign(jwsSigner);
-        return signedJWT.serialize();
-    }
-
-    private RSAKey generateRsaKey(String keyID) throws NoSuchProviderException, NoSuchAlgorithmException {
-        KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA", "BC");
-        kpg.initialize(2048);
-        KeyPair keyPair = kpg.generateKeyPair();
-        RSAPrivateKey privateKey = (RSAPrivateKey) keyPair.getPrivate();
-        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
-
-        return new RSAKey.Builder(publicKey)
-                .privateKey(privateKey)
-                .algorithm(JWSAlgorithm.RS256)
-                .keyID(keyID)
-                .build();
-    }
-
 }

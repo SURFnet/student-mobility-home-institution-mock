@@ -29,8 +29,8 @@ public class PersonEndpoint {
     }
 
     //https://open-education-api.github.io/specification/v4/docs.html#tag/persons/paths/~1persons~1{personId}/get
-    @GetMapping(value = "/persons/{personId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String, Object> persons(@PathVariable("personId") String personId, BearerTokenAuthentication authentication) throws IOException {
+    @GetMapping(value = "/persons/me", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Object> persons(BearerTokenAuthentication authentication) throws IOException {
         Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/person.json").getInputStream(), new TypeReference<Map<String, Object>>() {
         });
 
