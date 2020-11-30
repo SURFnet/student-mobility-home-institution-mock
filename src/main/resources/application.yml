@@ -2,7 +2,7 @@ logging:
   level:
     root: warn
     home: debug
-    org.springframework: warn
+    org.springframework: trace
 
 server:
   port: 8076
@@ -12,7 +12,7 @@ spring:
     oauth2:
       resourceserver:
         opaque-token:
-#          introspection-uri: https://connect.test2.surfconext.nl/oidc/introspect
-          introspection-uri: http://localhost:8081/introspect
+          introspection-uri: https://connect.test2.surfconext.nl/oidc/introspect
+#          introspection-uri: http://localhost:8081/introspect
           client-id: student-mobility-home-institution-mock
           client-secret: secret

@@ -51,7 +51,9 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.equalTo;
 
 @ExtendWith(SpringExtension.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, properties = {
+        "spring.security.oauth2.resourceserver.opaque-token.introspection-uri=http://localhost:8081/introspect"
+})
 public abstract class AbstractIntegrationTest {
 
     @LocalServerPort
