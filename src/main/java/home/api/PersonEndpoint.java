@@ -36,11 +36,14 @@ public class PersonEndpoint {
 
         Map<String, Object> tokenAttributes = authentication.getTokenAttributes();
         String eppn = (String) tokenAttributes.get("eduperson_principal_name");
+        Object givenName = tokenAttributes.get("given_name");
+        Object familyName = tokenAttributes.get("family_name");
 
         map.put("personId", eppn);
         map.put("mail", tokenAttributes.get("email"));
-        map.put("givenName", tokenAttributes.get("given_name"));
-        map.put("surname", tokenAttributes.get("family_name"));
+        map.put("givenName", givenName);
+        map.put("surname", familyName);
+        map.put("displayName", String.format("%s %s", givenName, familyName));
 
         LOG.info("Returning in person endpoint for " + eppn);
         return map;

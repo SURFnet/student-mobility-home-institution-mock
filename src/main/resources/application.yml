@@ -15,5 +15,4 @@ spring:
           introspection-uri: https://connect.test2.surfconext.nl/oidc/introspect
 #          introspection-uri: http://localhost:8081/introspect
           client-id: student.mobility.home.institution.mock.local
-#          client-id: resource-server-playground-client
           client-secret: secret

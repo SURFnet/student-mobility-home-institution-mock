@@ -76,7 +76,6 @@ public abstract class AbstractIntegrationTest {
         stubFor(post(urlPathMatching("/introspect")).willReturn(aResponse()
                 .withHeader("Content-Type", "application/json")
                 .withBody(introspectResult)));
-
         return UUID.randomUUID().toString();
     }
 

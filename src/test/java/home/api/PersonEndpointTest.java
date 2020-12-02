@@ -21,7 +21,8 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
                 .body("personId", equalTo("j.doe@example.com"))
                 .body("mail", equalTo("j.doe@example.com"))
                 .body("givenName", equalTo("John"))
-                .body("surname", equalTo("Doe"));
+                .body("surname", equalTo("Doe"))
+                .body("displayName", equalTo("John Doe"));
     }
 
     @Test
