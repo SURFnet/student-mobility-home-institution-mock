@@ -3,6 +3,8 @@ package home.api;
 import home.AbstractIntegrationTest;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
@@ -26,7 +28,7 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
     }
 
     @Test
-    void personsInvalidToken() throws Exception {
+    void personsInvalidToken() throws IOException {
         given()
                 .when()
                 .auth().oauth2(opaqueAccessToken(false))
@@ -34,4 +36,14 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
                 .then()
                 .statusCode(SC_UNAUTHORIZED);
     }
+
+    @Test
+    void status() {
+        given()
+                .when()
+                .get("/actuator/health")
+                .then()
+                .body("status", equalTo("UP"));
+    }
+
 }
