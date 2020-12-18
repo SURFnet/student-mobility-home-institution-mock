@@ -22,7 +22,7 @@ public class OfferingEndpointTest extends AbstractIntegrationTest {
     void offeringsNoSecurity() {
         given()
                 .when()
-                .get("/nope/offerings/1")
+                .get("/none/offerings/1")
                 .then()
                 .statusCode(SC_OK)
                 .body("abbreviation", equalTo("Test-INFOMQNM-20FS"));
@@ -70,15 +70,5 @@ public class OfferingEndpointTest extends AbstractIntegrationTest {
                 .statusCode(SC_UNAUTHORIZED);
     }
 
-
-    @Test
-    void offeringsNoAuth() {
-        given()
-                .when()
-                .get("/nope/offerings/1")
-                .then()
-                .statusCode(SC_OK)
-                .body("abbreviation", equalTo("Test-INFOMQNM-20FS"));
-    }
 
 }
