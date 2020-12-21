@@ -23,13 +23,8 @@ public class SecurityConfiguration {
     public static class OAuth2SecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 
         @Override
-        public void configure(WebSecurity web) throws Exception {
-            web.ignoring().antMatchers(HttpMethod.GET, "/actuator/**");
-        }
-
-        @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.requestMatchers().antMatchers("/actuator/**", "/persons/**", "/oauth2/offerings/**")
+            http.requestMatchers().antMatchers("/persons/**", "/oauth2/offerings/**")
                     .and()
                     .authorizeRequests(authz -> authz
                             .antMatchers(HttpMethod.GET)
