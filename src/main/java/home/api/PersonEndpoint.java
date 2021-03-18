@@ -39,6 +39,8 @@ public class PersonEndpoint {
         Object givenName = tokenAttributes.get("given_name");
         Object familyName = tokenAttributes.get("family_name");
 
+        LOG.debug(String.format("Persons request for person %s", eppn));
+
         map.put("personId", eppn);
         map.put("mail", tokenAttributes.get("email"));
         map.put("givenName", givenName);

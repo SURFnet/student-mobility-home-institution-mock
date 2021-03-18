@@ -24,7 +24,7 @@ public class SecurityConfiguration {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
-            http.requestMatchers().antMatchers("/persons/**", "/oauth2/offerings/**")
+            http.requestMatchers().antMatchers("/persons/**", "/associations/**", "/oauth2/offerings/**")
                     .and()
                     .authorizeRequests(authz -> authz
                             .antMatchers(HttpMethod.GET)
