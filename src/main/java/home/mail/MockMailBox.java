@@ -9,13 +9,12 @@ import org.springframework.util.FileCopyUtils;
 
 import javax.mail.internet.MimeMessage;
 import java.io.File;
-import java.io.IOException;
 
 public class MockMailBox extends MailBox {
 
     private Environment env;
 
-    MockMailBox(JavaMailSender mailSender, String emailFrom, Environment env) throws IOException {
+    MockMailBox(JavaMailSender mailSender, String emailFrom, Environment env) {
         super(mailSender, emailFrom);
         this.env = env;
     }

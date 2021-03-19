@@ -12,7 +12,7 @@ import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 
-@ActiveProfiles(value = "test", inheritProfiles = true)
+@ActiveProfiles(value = "test")
 public class ResultsEndpointTest extends AbstractIntegrationTest {
 
     @Test
