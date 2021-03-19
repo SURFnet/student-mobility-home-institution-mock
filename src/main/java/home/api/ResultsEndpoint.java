@@ -1,5 +1,8 @@
 package home.api;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import home.mail.MailBox;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.ResponseEntity;
@@ -8,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
+import javax.mail.MessagingException;
 import java.util.Map;
 
 @RestController
@@ -16,16 +19,27 @@ public class ResultsEndpoint {
 
     private static final Log LOG = LogFactory.getLog(ResultsEndpoint.class);
 
+    private final MailBox mailBox;
+    private final ObjectMapper objectMapper;
+
+    public ResultsEndpoint(MailBox mailBox, ObjectMapper objectMapper) {
+        this.mailBox = mailBox;
+        this.objectMapper = objectMapper;
+    }
+
     //https://open-education-api.github.io/specification/v4/docs.html#tag/associations
     @PostMapping(value = "/associations/me")
     public ResponseEntity<Void> results(BearerTokenAuthentication authentication,
-                                  @RequestBody Map<String, Object> resultsMap) {
+                                        @RequestBody Map<String, Object> resultsMap) throws JsonProcessingException, MessagingException {
         Map<String, Object> tokenAttributes = authentication.getTokenAttributes();
         String eppn = (String) tokenAttributes.get("eduperson_principal_name");
+        String givenName = (String) tokenAttributes.get("given_name");
+        String familyName = (String) tokenAttributes.get("family_name");
+        String email = (String) tokenAttributes.get("email");
 
-        Map<String, Object> result = (Map<String, Object>) resultsMap.get("result");
+        LOG.debug(String.format("Associations POST request for person %s with result %s", eppn, resultsMap));
 
-        LOG.debug(String.format("Persons request for person %s with result %s", eppn, result.get("state")));
+        mailBox.sendUserResults(String.format("%s %s", givenName, familyName), email, objectMapper.writeValueAsString(resultsMap));
 
         return ResponseEntity.ok().build();
     }

@@ -13,6 +13,9 @@ security:
     password: secret
 
 spring:
+  mail:
+    host: localhost
+    port: 3025
   security:
     oauth2:
       resourceserver:
@@ -21,3 +24,25 @@ spring:
 #          introspection-uri: http://localhost:8081/introspect
           client-id: student.mobility.home.institution.mock.local
           client-secret: secret
+
+email:
+  from: no-reply@surf.nl
+
+# used by the git plugin
+info:
+  build:
+    artifact: "@project.artifactId@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    info:
+      enabled: true
+  health:
+    mail:
+      enabled: false

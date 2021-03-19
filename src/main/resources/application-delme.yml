@@ -1,0 +1,42 @@
+logging:
+  level:
+    root: INFO
+    mail: DEBUG
+    org.springframework.security: INFO
+
+server:
+  port: 8093
+
+spring:
+  main:
+    banner-mode: off
+  mail:
+    host: localhost
+    port: 3025
+
+# Generic inteken credentials to check against
+intake:
+  user: user
+  password: secret
+
+email:
+  from: no-reply@surf.nl
+
+# used by the git plugin
+info:
+  build:
+    artifact: "@project.artifactId@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+      show-details: when_authorized
+    info:
+      enabled: true
+  health:
+    mail:
+      enabled: false
