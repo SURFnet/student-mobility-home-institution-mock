@@ -1,6 +1,6 @@
 # student-mobility-home-institution-mock
-[![Build Status](https://travis-ci.org/SURFnet/student-mobility-home-institution-mock.svg)](https://travis-ci.org/SURFnet/student-mobility-home-institution-mock)
-[![codecov.io](https://codecov.io/github/SURFnet/student-mobility-home-institution-mock/coverage.svg)](https://codecov.io/github/SURFnet/student-mobility-home-institution-mock)
+[![Build Status](https://github.com/SURFnet/student-mobility-home-institution-mock/actions/workflows/maven.yml/badge.svg)](https://github.com/SURFnet/student-mobility-home-institution-mock/actions/workflows/maven.yml/badge.svg)
+[![codecov](https://codecov.io/gh/SURFnet/student-mobility-home-institution-mock/branch/main/graph/badge.svg)](https://codecov.io/gh/SURFnet/student-mobility-home-institution-mock)
 
 Mock implementation of the OOAPI for educational institutions. 
 
