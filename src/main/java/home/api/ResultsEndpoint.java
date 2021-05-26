@@ -33,11 +33,12 @@ public class ResultsEndpoint {
                                         @RequestBody Map<String, Object> resultsMap) throws JsonProcessingException, MessagingException {
         Map<String, Object> tokenAttributes = authentication.getTokenAttributes();
         String eppn = (String) tokenAttributes.get("eduperson_principal_name");
+        String eduid = (String) tokenAttributes.get("eduid");
         String givenName = (String) tokenAttributes.get("given_name");
         String familyName = (String) tokenAttributes.get("family_name");
         String email = (String) tokenAttributes.get("email");
 
-        LOG.debug(String.format("Associations POST request for person %s with result %s", eppn, resultsMap));
+        LOG.debug(String.format("Associations POST request for person eppn %s and eduid %s with result %s", eppn, eduid, resultsMap));
 
         mailBox.sendUserResults(String.format("%s %s", givenName, familyName), email, objectMapper.writeValueAsString(resultsMap));
 
