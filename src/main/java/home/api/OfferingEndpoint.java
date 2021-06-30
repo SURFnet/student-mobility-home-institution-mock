@@ -17,7 +17,7 @@ public class OfferingEndpoint {
 
     private static final Log LOG = LogFactory.getLog(OfferingEndpoint.class);
 
-    //https://open-education-api.github.io/specification/v4/docs.html#tag/offerings
+    //PersonEndpoint
     @GetMapping(value = {"oauth2/offerings/{offeringId}", "basic/offerings/{offeringId}", "none/offerings/{offeringId}"},
             produces = MediaType.APPLICATION_JSON_VALUE)
     public String offerings(HttpServletRequest request, @PathVariable("offeringId") String offeringId) throws IOException {

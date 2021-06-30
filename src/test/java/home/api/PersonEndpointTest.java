@@ -28,6 +28,21 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
     }
 
     @Test
+    void personsMinimal() throws Exception {
+        given()
+                .when()
+                .auth().oauth2(opaqueAccessToken("data/introspect-minimal.json"))
+                .get("/persons/me")
+                .then()
+                .statusCode(SC_OK)
+                .body("personId", equalTo("j.doe@example.com"))
+                .body("mail", equalTo("vandamme.mcw@universiteitvanharderwijk.nl"))
+                .body("givenName", equalTo("Maartje"))
+                .body("surname", equalTo("Damme"))
+                .body("displayName", equalTo("Maartje van Damme"));
+    }
+
+    @Test
     void personsInvalidToken() throws IOException {
         given()
                 .when()
