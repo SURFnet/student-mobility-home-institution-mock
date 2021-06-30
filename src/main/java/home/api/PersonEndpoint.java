@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.util.StringUtils;
+
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -38,14 +40,15 @@ public class PersonEndpoint {
         String eppn = (String) tokenAttributes.get("eduperson_principal_name");
         Object givenName = tokenAttributes.get("given_name");
         Object familyName = tokenAttributes.get("family_name");
+        Object mail = tokenAttributes.get("email");
 
         LOG.debug(String.format("Persons request for person %s", eppn));
 
         map.put("personId", eppn);
-        map.put("mail", tokenAttributes.get("email"));
-        map.put("givenName", givenName);
-        map.put("surname", familyName);
-        map.put("displayName", String.format("%s %s", givenName, familyName));
+        if (StringUtils.hasText(mail.toString())) map.put("mail", mail);
+        if (StringUtils.hasText(givenName.toString())) map.put("givenName", givenName);
+        if (StringUtils.hasText(familyName.toString())) map.put("surname", familyName);
+        if (StringUtils.hasText(givenName.toString()) && StringUtils.hasText(familyName.toString())) map.put("displayName", String.format("%s %s", givenName, familyName));
 
         LOG.info("Returning in person endpoint for " + eppn);
         return map;
