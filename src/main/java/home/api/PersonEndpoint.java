@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthentication;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +29,7 @@ public class PersonEndpoint {
 
     //https://open-education-api.github.io/specification/v4/docs.html#tag/persons/paths/~1persons~1{personId}/get
     @GetMapping(value = "/persons/me", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Map<String, Object> persons(BearerTokenAuthentication authentication) throws IOException {
+    public ResponseEntity<Map<String, Object>>  persons(BearerTokenAuthentication authentication) throws IOException {
         Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/person.json").getInputStream(), new TypeReference<Map<String, Object>>() {
         });
 
@@ -54,6 +56,7 @@ public class PersonEndpoint {
         }
 
         LOG.info("Returning in person endpoint for " + eppn);
-        return map;
+
+        return ResponseEntity.ok(map);
     }
 }
