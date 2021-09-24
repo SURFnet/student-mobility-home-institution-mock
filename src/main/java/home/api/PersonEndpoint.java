@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthentication;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -29,7 +30,16 @@ public class PersonEndpoint {
 
     //https://open-education-api.github.io/specification/v4/docs.html#tag/persons/paths/~1persons~1{personId}/get
     @GetMapping(value = "/persons/me", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Map<String, Object>>  persons(BearerTokenAuthentication authentication) throws IOException {
+    public ResponseEntity<Map<String, Object>> personGet(BearerTokenAuthentication authentication) throws IOException {
+        return doPerson(authentication);
+    }
+
+    @PostMapping(value = "/persons/me", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Map<String, Object>> personPost(BearerTokenAuthentication authentication) throws IOException {
+        return doPerson(authentication);
+    }
+
+    private ResponseEntity<Map<String, Object>> doPerson(BearerTokenAuthentication authentication) throws IOException {
         Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/person.json").getInputStream(), new TypeReference<Map<String, Object>>() {
         });
 

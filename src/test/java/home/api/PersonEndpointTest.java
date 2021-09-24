@@ -28,6 +28,22 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
     }
 
     @Test
+    void personsPost() throws Exception {
+        String accessToken = opaqueAccessToken(true);
+        given()
+                .when()
+                .formParam("access_token", accessToken)
+                .post("/persons/me")
+                .then()
+                .statusCode(SC_OK)
+                .body("personId", equalTo("j.doe@example.com"))
+                .body("mail", equalTo("j.doe@example.com"))
+                .body("givenName", equalTo("John"))
+                .body("surname", equalTo("Doe"))
+                .body("displayName", equalTo("John Doe"));
+    }
+
+    @Test
     void personsMinimal() throws Exception {
         given()
                 .when()

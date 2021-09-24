@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.server.resource.web.DefaultBearerTokenResolver;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 
@@ -24,16 +25,17 @@ public class SecurityConfiguration {
 
         @Override
         protected void configure(HttpSecurity http) throws Exception {
+            DefaultBearerTokenResolver tokenResolver = new DefaultBearerTokenResolver();
+            tokenResolver.setAllowFormEncodedBodyParameter(true);
             http.requestMatchers().antMatchers("/persons/**", "/associations/**", "/oauth2/offerings/**")
                     .and()
                     .authorizeRequests(authz -> authz
                             .antMatchers(HttpMethod.GET)
                             .hasAuthority("SCOPE_openid")
                             .anyRequest().authenticated())
-
-                    .oauth2ResourceServer(oauth2 -> oauth2.opaqueToken())
                     .sessionManagement(sessionManagement ->
-                            sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+                            sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                    .oauth2ResourceServer().bearerTokenResolver(tokenResolver).opaqueToken();
         }
 
     }
