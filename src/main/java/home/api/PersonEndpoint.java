@@ -28,7 +28,7 @@ public class PersonEndpoint {
         this.objectMapper = objectMapper;
     }
 
-    //https://open-education-api.github.io/specification/v4/docs.html#tag/persons/paths/~1persons~1{personId}/get
+    //https://open-education-api.github.io/specification/v5-rc/docs.html#tag/persons/paths/~1persons~1me/get
     @GetMapping(value = "/persons/me", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Map<String, Object>> personGet(BearerTokenAuthentication authentication) throws IOException {
         return doPerson(authentication);

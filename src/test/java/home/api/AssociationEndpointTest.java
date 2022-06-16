@@ -11,6 +11,7 @@ import java.util.Collections;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
+import static org.hamcrest.Matchers.equalTo;
 
 @ActiveProfiles(value = "test")
 public class AssociationEndpointTest extends AbstractIntegrationTest {
@@ -49,7 +50,8 @@ public class AssociationEndpointTest extends AbstractIntegrationTest {
                 .pathParam("associationId", "123456")
                 .patch("/associations/{associationId}")
                 .then()
-                .statusCode(SC_OK);
+                .statusCode(SC_OK)
+                .body("associationId", equalTo("123456"));
     }
 
 }
