@@ -1,15 +1,20 @@
 {
   "personId": "123e4567-e89b-12d3-a456-426614174000",
+  "primaryCode": {
+    "codeType": "crohoCreboCode",
+    "code": "string"
+  },
   "givenName": "Maartje",
   "surnamePrefix": "van",
   "surname": "Damme",
   "displayName": "Maartje van Damme",
   "initials": "MCW",
-  "dateOfBirth": "2003-09-30T00:00:00.000Z",
+  "activeEnrollment": false,
+  "dateOfBirth": "2003-09-30",
   "cityOfBirth": "Utrecht",
   "countryOfBirth": "NL",
   "nationality": "Dutch",
-  "dateOfNationality": "2003-09-30T00:00:00.000Z",
+  "dateOfNationality": "2003-09-30",
   "affiliations": [
     "student"
   ],
@@ -24,10 +29,15 @@
   "titleSuffix": "BSc",
   "office": "string",
   "address": {
-    "type": "postal",
+    "addressType": "postal",
     "street": "Moreelsepark",
-    "streetNumber": 48,
-    "additional": "On the other side of the road",
+    "streetNumber": "48",
+    "additional": [
+      {
+        "language": "en-GB",
+        "value": "On the other side of the road"
+      }
+    ],
     "postalCode": "3511 EP",
     "city": "Utrecht",
     "countryCode": "NL",
@@ -42,6 +52,19 @@
   "ICERelation": "partner",
   "languageOfChoice": [
     "nl-NL"
+  ],
+  "otherCodes": [
+    {
+      "codeType": "nationalIdentityNumber",
+      "code": "00000"
+    }
+  ],
+  "consumers": [
+    {
+      "consumerKey": "x-test-consumer",
+      "additional": "custom",
+      "attributes": "here"
+    }
   ],
   "ext": {}
 }

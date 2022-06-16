@@ -13,30 +13,43 @@ import static org.apache.http.HttpStatus.SC_OK;
 import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
 
 @ActiveProfiles(value = "test")
-public class ResultsEndpointTest extends AbstractIntegrationTest {
+public class AssociationEndpointTest extends AbstractIntegrationTest {
 
     @Test
-    void associations() throws Exception {
+    void newAssociation() throws Exception {
         given()
                 .when()
                 .auth().oauth2(opaqueAccessToken(true))
                 .body(Collections.singletonMap("result", "ok"))
                 .contentType(ContentType.JSON)
-                .post("/associations/me")
+                .post("/associations/external/me")
                 .then()
                 .statusCode(SC_OK);
     }
 
     @Test
-    void associationsInvalidToken() throws IOException {
+    void newAssociationsInvalidToken() throws IOException {
         given()
                 .when()
                 .auth().oauth2(opaqueAccessToken(false))
                 .body(Collections.singletonMap("result", "ok"))
                 .contentType(ContentType.JSON)
-                .post("/associations/me")
+                .post("/associations/external/me")
                 .then()
                 .statusCode(SC_UNAUTHORIZED);
+    }
+
+    @Test
+    void patchAssociation() throws Exception {
+        given()
+                .when()
+                .auth().oauth2(opaqueAccessToken(true))
+                .body(Collections.singletonMap("result", "ok"))
+                .contentType(ContentType.JSON)
+                .pathParam("associationId", "123456")
+                .patch("/associations/{associationId}")
+                .then()
+                .statusCode(SC_OK);
     }
 
 }

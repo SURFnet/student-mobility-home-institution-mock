@@ -34,14 +34,14 @@ public class MailBoxTest {
     public final GreenMailExtension greenMail = new GreenMailExtension(ServerSetupTest.SMTP);
 
     @Test
-    public void sendConfirmation() throws MessagingException, IOException {
-        mailBox.sendUserResults("John Doe", "jdoe@example.com", IOUtils.toString(new ClassPathResource("/data/results.json").getInputStream()));
+    public void sendUserAssociation() throws MessagingException, IOException {
+        mailBox.sendUserAssociation("John Doe", "jdoe@example.com", IOUtils.toString(new ClassPathResource("/data/results.json").getInputStream()));
 
         MimeMessage mimeMessage = mailMessage();
         assertEquals("jdoe@example.com", mimeMessage.getRecipients(Message.RecipientType.TO)[0].toString());
 
         String body = getBody(mimeMessage);
-        assertTrue(body.contains("Introduction to Biolog"));
+        assertTrue(body.contains("completed"));
 
     }
 

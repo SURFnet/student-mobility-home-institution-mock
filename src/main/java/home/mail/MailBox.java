@@ -23,11 +23,18 @@ public class MailBox {
         this.emailFrom = emailFrom;
     }
 
-    public void sendUserResults(String userName, String recipient, String results) throws MessagingException {
+    public void sendUserAssociation(String userName, String recipient, String results) throws MessagingException {
         Map<String, Object> variables = new HashMap<>();
         variables.put("userName", userName);
         variables.put("results", results);
-        sendMail("results", "Results", variables, recipient);
+        sendMail("association", "Association", variables, recipient);
+    }
+
+    public void sendNewAssociation(String userName, String recipient, String results) throws MessagingException {
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("userName", userName);
+        variables.put("results", results);
+        sendMail("new_association", "New association", variables, recipient);
     }
 
     private void sendMail(String templateName, String subject, Map<String, Object> variables, String to) throws MessagingException {
