@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Map;
 import java.util.UUID;
 
@@ -75,7 +76,7 @@ public class AssociationEndpoint {
 
     //https://open-education-api.github.io/specification/v4/docs.html#tag/associations
     @PostMapping(value = "/associations/me")
-    public ResponseEntity<Void> results(BearerTokenAuthentication authentication,
+    public ResponseEntity<Map<String, Object>> results(BearerTokenAuthentication authentication,
                                         @RequestBody Map<String, Object> resultsMap) throws JsonProcessingException, MessagingException {
         Map<String, Object> tokenAttributes = authentication.getTokenAttributes();
         String eppn = (String) tokenAttributes.get("eduperson_principal_name");
@@ -88,7 +89,7 @@ public class AssociationEndpoint {
 
         mailBox.sendUserResults(String.format("%s %s", givenName, familyName), email, objectMapper.writeValueAsString(resultsMap));
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(Collections.singletonMap("res", "ok"));
     }
 
 }
