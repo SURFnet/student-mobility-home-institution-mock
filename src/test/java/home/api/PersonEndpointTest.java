@@ -72,7 +72,7 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
     void status() {
         given()
                 .when()
-                .get("/actuator/health")
+                .get("/internal/health")
                 .then()
                 .body("status", equalTo("UP"));
     }
