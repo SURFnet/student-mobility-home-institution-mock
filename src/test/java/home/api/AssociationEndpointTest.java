@@ -54,4 +54,16 @@ public class AssociationEndpointTest extends AbstractIntegrationTest {
                 .body("associationId", equalTo("123456"));
     }
 
+    @Test
+    void associationsV4() throws Exception {
+        given()
+                .when()
+                .auth().oauth2(opaqueAccessToken(true))
+                .body(Collections.singletonMap("result", "ok"))
+                .contentType(ContentType.JSON)
+                .post("/associations/me")
+                .then()
+                .statusCode(SC_OK);
+    }
+
 }

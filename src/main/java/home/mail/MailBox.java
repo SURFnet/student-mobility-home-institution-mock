@@ -37,6 +37,13 @@ public class MailBox {
         sendMail("new_association", "New association", variables, recipient);
     }
 
+    public void sendUserResults(String userName, String recipient, String results) throws MessagingException {
+        Map<String, Object> variables = new HashMap<>();
+        variables.put("userName", userName);
+        variables.put("results", results);
+        sendMail("results", "Results", variables, recipient);
+    }
+
     private void sendMail(String templateName, String subject, Map<String, Object> variables, String to) throws MessagingException {
         String html = this.mailTemplate(String.format("mail_templates/%s.html", templateName), variables);
         String text = this.mailTemplate(String.format("mail_templates/%s.txt", templateName), variables);
