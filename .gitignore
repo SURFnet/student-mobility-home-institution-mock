@@ -1,0 +1,9 @@
+.idea
+*.iml
+target
+TODO.txt
+.classpath
+.project
+.settings/
+database/
+docu
