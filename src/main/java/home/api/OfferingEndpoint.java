@@ -25,6 +25,6 @@ public class OfferingEndpoint {
 
         LOG.debug(String.format("Offering request for URI %s", requestURI));
 
-        return IOUtils.toString(new ClassPathResource("/data/offering.json").getInputStream());
+        return IOUtils.toString(new ClassPathResource("/data/offering_program_v5.json").getInputStream());
     }
 }

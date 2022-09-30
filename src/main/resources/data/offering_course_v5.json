@@ -1,0 +1,134 @@
+{
+  "offeringId": "d027bcf6-fc75-41b9-84e3-11b33b890da2",
+  "primaryCode": {
+    "codeType": "uuid",
+    "code": "d027bcf6-fc75-41b9-84e3-11b33b890da2"
+  },
+  "offeringType": "course",
+  "academicSession": {
+    "academicSessionId": "91cc56f3-80dd-434e-b04c-8376d9b26c4b",
+    "academicSessionType": "period",
+    "primaryCode": {
+      "codeType": "uuid",
+      "code": "91cc56f3-80dd-434e-b04c-8376d9b26c4b"
+    },
+    "name": [
+      {
+        "language": "nl-NL",
+        "value": "Blok 1"
+      },
+      {
+        "language": "en-GB",
+        "value": "Block 1"
+      }
+    ],
+    "startDate": "2022-06-06",
+    "endDate": "2023-02-17",
+    "otherCodes": [],
+    "consumers": [],
+    "ext": {}
+  },
+  "name": [
+    {
+      "language": "nl-NL",
+      "value": "Blok 1"
+    },
+    {
+      "language": "en-GB",
+      "value": "Block 1"
+    }
+  ],
+  "abbreviation": "1",
+  "description": [
+    {
+      "language": "nl-NL",
+      "value": "Blok 1"
+    },
+    {
+      "language": "en-GB",
+      "value": "Block 1"
+    }
+  ],
+  "teachingLanguage": "nld",
+  "modeOfDelivery": [],
+  "enrolledNumberStudents": 0,
+  "pendingNumberStudents": 0,
+  "minNumberStudents": 0,
+  "resultExpected": true,
+  "resultValueType": "",
+  "link": "",
+  "otherCodes": [],
+  "consumers": [],
+  "ext": {},
+  "startDate": "2022-06-06",
+  "endDate": "2023-02-17",
+  "flexibleEntryPeriodStart": "",
+  "flexibleEntryPeriodEnd": "",
+  "course": {
+    "courseId": "221aa260-b7a5-4d11-ad9a-ae324cbcbe4b",
+    "primaryCode": {
+      "codeType": "uuid",
+      "code": "221aa260-b7a5-4d11-ad9a-ae324cbcbe4b"
+    },
+    "name": [
+      {
+        "language": "nl-NL",
+        "value": "Bedrijfsadministratie 4"
+      },
+      {
+        "language": "en-GB",
+        "value": "Business Administration Of Cost Types"
+      }
+    ],
+    "abbreviation": "MEBE-BEADVKK-04",
+    "studyLoad": {
+      "studyLoadUnit": "ects",
+      "value": 3
+    },
+    "modeOfDelivery": [],
+    "duration": "",
+    "firstStartDate": "",
+    "description": [
+      {
+        "language": "nl-NL",
+        "value": "1 Inhoud \n In deze module leert de student het toerekenen van kosten via de kostenplaatsenmethode en het maken van analyses van afdelingsresultaten. \n \n Onder andere komen de volgende onderwerpen aan bod: \n \n - het toerekenen van kosten aan orders \n - de kostenplaatsenmethode \n - boekingen bij toepassing van de kostenplaatsenmethode \n - de budgettering van de indirecte kosten \n - het budget en de boekhouding \n - de fabrieksboekhouding bij Make to stock \n - de berekening en de analyse van het periode resultaat \n - de administratie van dienstverlenende bedrijven \n - de boekhouding bij direct costing \n \n Voor een inhoudelijke beschrijving van deze cursus kan je het beste kijken in de cursuswijzer, \n te vinden op sharepoint: https://www.sharepoint.hu.nl/sites/CursuswijzersFEM. Daar vind je \n ook een beschrijving van de competenties en vaardigheden, behorende bij de cursus."
+      },
+      {
+        "language": "en-GB",
+        "value": "1 Inhoud \n In deze module leert de student het toerekenen van kosten via de kostenplaatsenmethode en het maken van analyses van afdelingsresultaten. \n \n Onder andere komen de volgende onderwerpen aan bod: \n \n - het toerekenen van kosten aan orders \n - de kostenplaatsenmethode \n - boekingen bij toepassing van de kostenplaatsenmethode \n - de budgettering van de indirecte kosten \n - het budget en de boekhouding \n - de fabrieksboekhouding bij Make to stock \n - de berekening en de analyse van het periode resultaat \n - de administratie van dienstverlenende bedrijven \n - de boekhouding bij direct costing \n \n Voor een inhoudelijke beschrijving van deze cursus kan je het beste kijken in de cursuswijzer, \n te vinden op sharepoint: https://www.sharepoint.hu.nl/sites/CursuswijzersFEM. Daar vind je \n ook een beschrijving van de competenties en vaardigheden, behorende bij de cursus."
+      }
+    ],
+    "teachingLanguage": "nld",
+    "fieldsOfStudy": "",
+    "learningOutcomes": [
+      []
+    ],
+    "admissionRequirements": [
+      {
+        "language": "nl-NL",
+        "value": "Je moet voldoen aan de volgende eisen\n- Ingeschreven voor één van de volgende opleidingen\n- B Bedrijfseconomie"
+      },
+      {
+        "language": "en-GB",
+        "value": "You must meet the following requirements\n- Enrolled for one of the following degree programmes\n- Business Economics"
+      }
+    ],
+    "qualificationRequirements": [],
+    "level": "bachelor",
+    "enrollment": [],
+    "resources": [
+      "Book Fuchs en Van Vlimmeren;\nBoekhouden geboekstaafd 2;\n978 9001784287;\n7;\nNoordhoof;\n",
+      "Book Fuchs en Van Vlimmeren;\nBoekhouden geboekstaafd 2, opgaven;\n978-90-01-41008-7;\n7;\nNoordhoff;"
+    ],
+    "assessment": [],
+    "link": "http://rontw.osiris-student.nl/#/nav/n4/onderwijscatalogus/extern/cursus?cursusid=2053398&taal=nl",
+    "addresses": [],
+    "otherCodes": [],
+    "consumers": [],
+    "ext": {},
+    "validFrom": "",
+    "validTo": ""
+  },
+  "programOffering": "",
+  "organization": "1326c9c1-1e36-4823-b1a6-0ab516e655a5"
+}
