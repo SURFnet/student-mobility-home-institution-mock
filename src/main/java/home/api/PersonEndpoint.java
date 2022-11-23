@@ -2,8 +2,10 @@ package home.api;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.catalina.webresources.AbstractArchiveResource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,13 +20,16 @@ import java.io.IOException;
 import java.util.Map;
 
 @RestController
-public class PersonEndpoint {
+public class PersonEndpoint extends AbstractDelayEndpoint {
 
     private static final Log LOG = LogFactory.getLog(PersonEndpoint.class);
 
     private final ObjectMapper objectMapper;
 
-    public PersonEndpoint(ObjectMapper objectMapper) {
+    public PersonEndpoint(ObjectMapper objectMapper,
+                          @Value("${delay.enabled}") boolean delayEnabled,
+                          @Value("${delay.millis-person}") long delayMillis) {
+        super(delayEnabled, delayMillis);
         this.objectMapper = objectMapper;
     }
 
@@ -40,6 +45,7 @@ public class PersonEndpoint {
     }
 
     private ResponseEntity<Map<String, Object>> doPerson(BearerTokenAuthentication authentication) throws IOException {
+        this.delayResponse();
         Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/person.json").getInputStream(), new TypeReference<Map<String, Object>>() {
         });
 

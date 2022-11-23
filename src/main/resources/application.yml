@@ -4,6 +4,12 @@ logging:
     home: debug
     org.springframework: info
 
+delay:
+  enabled: true
+  millis-association: 1
+  millis-offering: 1
+  millis-person: 1
+
 server:
   port: 8076
 
