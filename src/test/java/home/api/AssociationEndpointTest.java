@@ -9,8 +9,7 @@ import java.io.IOException;
 import java.util.Collections;
 
 import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_OK;
-import static org.apache.http.HttpStatus.SC_UNAUTHORIZED;
+import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
 
 @ActiveProfiles(value = "test")
@@ -25,7 +24,7 @@ public class AssociationEndpointTest extends AbstractIntegrationTest {
                 .contentType(ContentType.JSON)
                 .post("/associations/external/me")
                 .then()
-                .statusCode(SC_OK);
+                .statusCode(SC_CREATED);
     }
 
     @Test

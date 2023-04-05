@@ -10,6 +10,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthentication;
 import org.springframework.web.bind.annotation.*;
@@ -53,7 +54,7 @@ public class AssociationEndpoint extends AbstractDelayEndpoint{
         Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/association.json").getInputStream(), new TypeReference<Map<String, Object>>() {
         });
         map.put("associationId", UUID.randomUUID().toString());
-        return ResponseEntity.ok(map);
+        return ResponseEntity.status(HttpStatus.CREATED).body(map);
     }
 
     //https://open-education-api.github.io/specification/v5-rc/docs.html#tag/associations/paths/~1associations~1{associationId}/patch
