@@ -1,0 +1,65 @@
+logging:
+  level:
+    root: warn
+    home: debug
+    org.springframework: info
+
+delay:
+  enabled: true
+  millis-association: 1
+  millis-offering: 1
+  millis-person: 1
+
+server:
+  port: 8076
+
+security:
+  user:
+    name: user
+    password: secret
+
+spring:
+  mail:
+    host: localhost
+    port: 3025
+  security:
+    oauth2:
+      resourceserver:
+        opaque-token:
+          introspection-uri: https://connect.test2.surfconext.nl/oidc/introspect
+#          introspection-uri: http://localhost:8081/introspect
+          client-id: student.mobility.home.institution.mock.local
+          client-secret: secret
+
+email:
+  from: no-reply@surf.nl
+
+# used by the git plugin
+info:
+  build:
+    artifact: "@project.artifactId@"
+    version: "@project.version@"
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include:
+          - health
+          - info
+      base-path: "/internal"
+  endpoint:
+    health:
+      enabled: true
+      show-details: when_authorized
+    info:
+      enabled: true
+  health:
+    mail:
+      enabled: false
+  info:
+    git:
+      mode: full
+    defaults:
+      enabled: true

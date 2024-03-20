@@ -1,0 +1,10 @@
+# yamllint disable rule:line-length
+---
+version: '3.8'
+services:
+  intekenontvanger-generiek:
+    image: ghcr.io/surfnet/student-mobility-home-institution-mock/home-institution-mock:latest
+    volumes:
+      - ${PWD}/application.yml:/application.yml
+    ports:
+      - 8092:8092
