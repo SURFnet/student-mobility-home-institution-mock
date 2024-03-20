@@ -7,4 +7,4 @@ services:
     volumes:
       - ${PWD}/application.yml:/application.yml
     ports:
-      - 8092:8092
+      - 8076:8076
