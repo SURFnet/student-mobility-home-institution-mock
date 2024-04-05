@@ -11,6 +11,11 @@ Mock implementation of the OOAPI for educational institutions.
 - Java 8
 - Maven 3
 
+Set the JAVA_HOME property for maven (example for macOS):
+```
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/
+```
+
 ## [Building and running](#building-and-running)
 
 ### [The student-mobility-home-institution-mock-server](#student-mobility-home-institution-mock-server)
