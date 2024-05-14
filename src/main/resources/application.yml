@@ -2,7 +2,7 @@ logging:
   level:
     root: warn
     home: debug
-    org.springframework: info
+    org.springframework: trace
 
 delay:
   enabled: true
