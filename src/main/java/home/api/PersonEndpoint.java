@@ -51,13 +51,16 @@ public class PersonEndpoint extends AbstractDelayEndpoint {
 
         Map<String, Object> tokenAttributes = authentication.getTokenAttributes();
         String eppn = (String) tokenAttributes.get("eduperson_principal_name");
+        String sub = (String) tokenAttributes.get("sub");
         String givenName = (String) tokenAttributes.get("given_name");
         String familyName = (String) tokenAttributes.get("family_name");
         String mail = (String) tokenAttributes.get("email");
 
-        LOG.debug(String.format("Persons request for person %s", eppn));
+        LOG.debug(String.format("Persons request for eppn: %s, sub: %s", eppn, sub));
 
-        map.put("personId", eppn);
+        if (StringUtils.hasText(eppn)) {
+            map.put("personId", eppn);
+        }
         if (StringUtils.hasText(mail)) {
             map.put("mail", mail);
         }
