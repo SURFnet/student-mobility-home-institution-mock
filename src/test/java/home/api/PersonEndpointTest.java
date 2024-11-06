@@ -1,7 +1,10 @@
 package home.api;
 
 import home.AbstractIntegrationTest;
+import io.restassured.config.EncoderConfig;
+import io.restassured.config.RestAssuredConfig;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.MediaType;
 
 import java.io.IOException;
 
@@ -31,8 +34,13 @@ public class PersonEndpointTest extends AbstractIntegrationTest {
     void personsPost() throws Exception {
         String accessToken = opaqueAccessToken(true);
         given()
+                .config(RestAssuredConfig.config()
+                        .encoderConfig(EncoderConfig.encoderConfig()
+                                ///Bugfix for the DefaultBearerTokenResolver being strict in content type checking
+                                .appendDefaultContentCharsetToContentTypeIfUndefined(false)))
                 .when()
                 .formParam("access_token", accessToken)
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
                 .post("/persons/me")
                 .then()
                 .statusCode(SC_OK)

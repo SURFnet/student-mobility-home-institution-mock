@@ -27,7 +27,8 @@ public class SecurityConfiguration {
         protected void configure(HttpSecurity http) throws Exception {
             DefaultBearerTokenResolver tokenResolver = new DefaultBearerTokenResolver();
             tokenResolver.setAllowFormEncodedBodyParameter(true);
-            http.requestMatchers().antMatchers("/persons/**", "/associations/**", "/oauth2/offerings/**")
+            http.requestMatchers()
+                    .antMatchers("/persons/**", "/associations/**", "/oauth2/offerings/**")
                     .and()
                     .authorizeRequests(authz -> authz
                             .antMatchers(HttpMethod.GET)
@@ -35,6 +36,7 @@ public class SecurityConfiguration {
                             .anyRequest().authenticated())
                     .sessionManagement(sessionManagement ->
                             sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                    .csrf().disable()
                     .oauth2ResourceServer().bearerTokenResolver(tokenResolver).opaqueToken();
         }
 
