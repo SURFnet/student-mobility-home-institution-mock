@@ -3,6 +3,7 @@ logging:
     root: warn
     home: debug
     org.springframework: info
+    org.springframework.security: trace
 
 delay:
   enabled: true
