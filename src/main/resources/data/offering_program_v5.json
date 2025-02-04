@@ -10,20 +10,20 @@
     "academicSessionType": "academic year",
     "primaryCode": {
       "codeType": "identifier",
-      "code": "2022-2023"
+      "code": "2022-2029"
     },
     "name": [
       {
         "language": "nl-NL",
-        "value": "2022-2023-nl"
+        "value": "2022-2029-nl"
       },
       {
         "language": "en-GB",
-        "value": "2022-2023-en"
+        "value": "2022-2029-en"
       }
     ],
     "startDate": "2022-09-01",
-    "endDate": "2023-08-27",
+    "endDate": "2029-08-27",
     "otherCodes": [
       {
         "codeType": "x-ascme",
@@ -76,7 +76,7 @@
     }
   ],
   "startDate": "2022-09-01",
-  "endDate": "2023-08-27",
+  "endDate": "2029-08-27",
   "priceInformation": [],
   "program": {
     "name": [
