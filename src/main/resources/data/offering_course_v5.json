@@ -23,7 +23,7 @@
       }
     ],
     "startDate": "2022-06-06",
-    "endDate": "2023-02-17",
+    "endDate": "2029-02-17",
     "otherCodes": [],
     "consumers": [],
     "ext": {}
@@ -61,7 +61,7 @@
   "consumers": [],
   "ext": {},
   "startDate": "2022-06-06",
-  "endDate": "2023-02-17",
+  "endDate": "2029-02-17",
   "flexibleEntryPeriodStart": "",
   "flexibleEntryPeriodEnd": "",
   "course": {
