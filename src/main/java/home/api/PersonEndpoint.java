@@ -56,7 +56,7 @@ public class PersonEndpoint extends AbstractDelayEndpoint {
         String familyName = (String) tokenAttributes.get("family_name");
         String mail = (String) tokenAttributes.get("email");
 
-        LOG.debug(String.format("Persons request for eppn: %s, sub: %s", eppn, sub));
+        LOG.debug(String.format("Persons request for eppn: %s, sub: %s, mail: %s", eppn, sub, mail));
 
         if (StringUtils.hasText(eppn)) {
             map.put("personId", eppn);
