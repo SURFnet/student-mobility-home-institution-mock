@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 public class AssociationEndpoint extends AbstractDelayEndpoint{
@@ -54,6 +52,22 @@ public class AssociationEndpoint extends AbstractDelayEndpoint{
         Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/association.json").getInputStream(), new TypeReference<Map<String, Object>>() {
         });
         map.put("associationId", UUID.randomUUID().toString());
+
+        String[] statuses = {"pending", "canceled", "denied", "associated"};
+        Random random = new Random();
+        String randomStatus = statuses[random.nextInt(statuses.length)];
+        map.put("state",randomStatus);
+
+        List<Map<String, String>> messages = new ArrayList<>();
+        // Create a map for the message
+        Map<String, String> messageDetails = new HashMap<>();
+        messageDetails.put("language", "en-GB");
+        messageDetails.put("value", "This is just a random state, since this is a demo only.");
+
+        // Add message details to the list
+        messages.add(messageDetails);
+        map.put("message", messages);
+
         return ResponseEntity.status(HttpStatus.CREATED).body(map);
     }
 
@@ -74,6 +88,22 @@ public class AssociationEndpoint extends AbstractDelayEndpoint{
         Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/association.json").getInputStream(), new TypeReference<Map<String, Object>>() {
         });
         map.put("associationId", associationId);
+
+        String[] statuses = {"pending", "canceled", "denied", "associated"};
+        Random random = new Random();
+        String randomStatus = statuses[random.nextInt(statuses.length)];
+        map.put("state",randomStatus);
+
+        List<Map<String, String>> messages = new ArrayList<>();
+        // Create a map for the message
+        Map<String, String> messageDetails = new HashMap<>();
+        messageDetails.put("language", "en-GB");
+        messageDetails.put("value", "This is just a random state, since this is a demo only.");
+
+        // Add message details to the list
+        messages.add(messageDetails);
+        map.put("message", messages);
+
         return ResponseEntity.ok(map);
     }
 
