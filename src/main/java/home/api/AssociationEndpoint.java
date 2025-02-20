@@ -26,6 +26,9 @@ public class AssociationEndpoint extends AbstractDelayEndpoint{
 
     private final MailBox mailBox;
     private final ObjectMapper objectMapper;
+    private final String[] statuses = {"pending", "canceled", "denied", "associated"};
+    private final Random random = new Random();
+
 
     public AssociationEndpoint(MailBox mailBox,
                                ObjectMapper objectMapper,
@@ -53,20 +56,7 @@ public class AssociationEndpoint extends AbstractDelayEndpoint{
         });
         map.put("associationId", UUID.randomUUID().toString());
 
-        String[] statuses = {"pending", "canceled", "denied", "associated"};
-        Random random = new Random();
-        String randomStatus = statuses[random.nextInt(statuses.length)];
-        map.put("state",randomStatus);
-
-        List<Map<String, String>> messages = new ArrayList<>();
-        // Create a map for the message
-        Map<String, String> messageDetails = new HashMap<>();
-        messageDetails.put("language", "en-GB");
-        messageDetails.put("value", "This is just a random state, since this is a demo only.");
-
-        // Add message details to the list
-        messages.add(messageDetails);
-        map.put("message", messages);
+        addRandomState(map);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(map);
     }
@@ -89,24 +79,10 @@ public class AssociationEndpoint extends AbstractDelayEndpoint{
         });
         map.put("associationId", associationId);
 
-        String[] statuses = {"pending", "canceled", "denied", "associated"};
-        Random random = new Random();
-        String randomStatus = statuses[random.nextInt(statuses.length)];
-        map.put("state",randomStatus);
-
-        List<Map<String, String>> messages = new ArrayList<>();
-        // Create a map for the message
-        Map<String, String> messageDetails = new HashMap<>();
-        messageDetails.put("language", "en-GB");
-        messageDetails.put("value", "This is just a random state, since this is a demo only.");
-
-        // Add message details to the list
-        messages.add(messageDetails);
-        map.put("message", messages);
+        addRandomState(map);
 
         return ResponseEntity.ok(map);
     }
-
 
     //https://open-education-api.github.io/specification/v4/docs.html#tag/associations
     @PostMapping(value = "/associations/me")
@@ -124,5 +100,19 @@ public class AssociationEndpoint extends AbstractDelayEndpoint{
         return ResponseEntity.ok(Collections.singletonMap("res", "ok"));
     }
 
+    private void addRandomState(Map<String, Object> map) {
+        String randomStatus = statuses[random.nextInt(statuses.length)];
+        map.put("state",randomStatus);
+
+        List<Map<String, String>> messages = new ArrayList<>();
+        // Create a map for the message
+        Map<String, String> messageDetails = new HashMap<>();
+        messageDetails.put("language", "en-GB");
+        messageDetails.put("value", "This is just a random state, since this is a demo only.");
+
+        // Add message details to the list
+        messages.add(messageDetails);
+        map.put("message", messages);
+    }
 
 }
