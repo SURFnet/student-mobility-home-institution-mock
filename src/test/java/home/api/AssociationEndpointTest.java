@@ -7,13 +7,32 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.Map;
+import java.util.UUID;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ActiveProfiles(value = "test")
 public class AssociationEndpointTest extends AbstractIntegrationTest {
+
+    @Test
+    @SuppressWarnings("unchecked")
+    void getAssociation() throws Exception {
+        String uid4 = UUID.randomUUID().toString();
+        given()
+                .when()
+                .auth().oauth2(opaqueAccessToken(true))
+                .body(Collections.singletonMap("result", "ok"))
+                .contentType(ContentType.JSON)
+                .pathParam("associationId", uid4)
+                .get("/associations/{associationId}")
+                .then()
+                .statusCode(SC_OK)
+                .body("associationId", equalTo(uid4));
+    }
 
     @Test
     void newAssociation() throws Exception {

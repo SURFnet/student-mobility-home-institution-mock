@@ -39,6 +39,25 @@ public class AssociationEndpoint extends AbstractDelayEndpoint{
         this.objectMapper = objectMapper;
     }
 
+    @GetMapping("/associations/{associationId}")
+    public ResponseEntity<Map<String, Object>> getAssociation(BearerTokenAuthentication authentication,
+                                                              @PathVariable("associationId") String associationId) throws IOException {
+        this.delayResponse();
+        User user = new User(authentication.getTokenAttributes());
+
+        LOG.debug(String.format("Associations GET request for person eppn %s and eduid %s for associationId %s",
+                user.getEppn(), user.getEduid(), associationId));
+
+        Map<String, Object> map = objectMapper.readValue(new ClassPathResource("/data/association.json").getInputStream(), new TypeReference<Map<String, Object>>() {
+        });
+        map.put("associationId", associationId);
+
+        addRandomState(map);
+
+        return ResponseEntity.ok(map);
+    }
+
+
     //https://open-education-api.github.io/specification/v5-rc/docs.html#tag/associations/paths/~1associations~1external~1me/post
     @PostMapping(value = "/associations/external/me")
     public ResponseEntity<Map<String, Object>> newAssociation(BearerTokenAuthentication authentication,
