@@ -118,7 +118,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <release>8</release>
+                    <release>21</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -137,7 +137,7 @@
                                     <version>3.8.4</version>
                                 </requireMavenVersion>
                                 <requireJavaVersion>
-                                    <version>[1.8.0-0,1.8.0-500]</version>
+                                    <version>21</version>
                                 </requireJavaVersion>
                             </rules>
                         </configuration>
