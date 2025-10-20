@@ -54,6 +54,27 @@
   ],
   "resultExpected": false,
   "link": "https://studiegids.universiteitleiden.nl/studies/9036",
+  "addresses": [
+    {
+      "addressType": "postal",
+      "street": "Moreelsepark",
+      "streetNumber": "48",
+      "additional": [
+        {
+          "language": "en-GB",
+          "value": "On the other side of the road"
+        }
+      ],
+      "postalCode": "3511 EP",
+      "city": "Utrecht",
+      "countryCode": "NL",
+      "geolocation": {
+        "latitude": 52.089123,
+        "longitude": 5.113337
+      },
+      "ext": {}
+    }
+  ],
   "otherCodes": [
     {
       "codeType": "x-ascme",
@@ -111,6 +132,7 @@
     "fieldsOfStudy": "",
     "learningOutcomes": [
       []
-    ]
+    ],
+    "level": "bachelor"
   }
 }

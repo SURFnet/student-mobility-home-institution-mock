@@ -122,7 +122,27 @@
     ],
     "assessment": [],
     "link": "http://rontw.osiris-student.nl/#/nav/n4/onderwijscatalogus/extern/cursus?cursusid=2053398&taal=nl",
-    "addresses": [],
+    "addresses": [
+      {
+        "addressType": "postal",
+        "street": "Moreelsepark",
+        "streetNumber": "48",
+        "additional": [
+          {
+            "language": "en-GB",
+            "value": "On the other side of the road"
+          }
+        ],
+        "postalCode": "3511 EP",
+        "city": "Utrecht",
+        "countryCode": "NL",
+        "geolocation": {
+          "latitude": 52.089123,
+          "longitude": 5.113337
+        },
+        "ext": {}
+      }
+    ],
     "otherCodes": [],
     "consumers": [],
     "ext": {},
