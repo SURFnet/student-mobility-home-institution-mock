@@ -9,7 +9,7 @@
   "surname": "Damme",
   "displayName": "Maartje van Damme",
   "initials": "MCW",
-  "activeEnrollment": false,
+  "activeEnrollment": true,
   "dateOfBirth": "2003-09-30",
   "cityOfBirth": "Utrecht",
   "countryOfBirth": "NL",
